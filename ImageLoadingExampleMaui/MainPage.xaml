@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="ImageSource path confusion"
+             x:Class="ImageLoadingExampleMaui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+            <Border
+                Stroke="blue">
+            <VerticalStackLayout>
+            <Label
+                Text="Source: maria.png (works)"
+                FontSize="18"
+                HorizontalOptions="Center" />
+            <Image
+                Source="maria.png"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+            </VerticalStackLayout>
+            </Border>
+            <Border
+                Stroke="red">
+                <VerticalStackLayout>
+                    <Label
+                Text="Source: manga/maria.png (not working 😔)"
+                FontSize="18"
+                HorizontalOptions="Center" />
+                    <Image
+                Source="manga/maria.png"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+                </VerticalStackLayout>
+            </Border>
+            <VerticalStackLayout
+                HorizontalOptions="Center"
+                Spacing="10">
+                <Label>
+                    The image is located inside the project folder: "Resources/Images/manga/maria.png".
+                </Label>
+                <Label>
+                    The problem is that the image is located inside the "manga" subfolder of "Images", but to access this image (through XAML or C#) I only have to specify the filename + extension. In this case "maria.png" is enough. I don't need to specify the subfolder.
+                </Label>
+                <Label>
+                    But what if there is an another maria.png file in a different (sub)folder? How can I differentiate the 2 images?
+                </Label>
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
